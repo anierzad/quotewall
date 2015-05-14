@@ -3,15 +3,18 @@ var express = require('express'),
 
 // Database setup.
 var db = mongoose.connect('mongodb://localhost/quotewall');
+var user = require('./models/user')
 var quote = require('./models/quote');
+var quotePart = require('./models/quotePart');
 
 // General setup.
 var app = express();
 var port = process.env.PORT || 3000;
 
 // Routes setup.
-quoteRouter = require('./routes/quoteRoutes')(quote);
-app.use('/api/quotes', quoteRouter);
+app.use('/api/users', require('./routes/users')(user));
+app.use('/api/quotes', require('./routes/quotes')(quote));
+app.use('/api/quoteparts', require('./routes/quoteParts')(quotePart));
 
 // Test route.
 app.get('/', function(req, res) {

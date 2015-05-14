@@ -1,13 +1,9 @@
 var mongoose = require('mongoose'),
-	schema = mongoose.Schema;
+	Schema = mongoose.Schema;
 
-var quoteModel = new schema({
-	author: {
-		type: String
-	},
-	content: {
-		type: String
+module.exports = mongoose.model('quote', new Schema({
+	created: {
+		type: Date,
+		default: Date.now
 	}
-});
-
-module.exports = mongoose.model('quote', quoteModel);
+}));
