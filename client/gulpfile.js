@@ -25,7 +25,7 @@ function notifyLivereload(event) {
 gulp.task('default', function() {
 	startLivereload();
 
-	gulp.watch('./public/*.html', notifyLivereload);
+	gulp.watch(['./public/*.html','./public/app.js'], notifyLivereload);
 
 	nodemon({
 		script: 'app.js',
@@ -33,7 +33,7 @@ gulp.task('default', function() {
 		env: {
 			PORT: 3500
 		},
-		ignore: ['./node_modules/**']
+		ignore: ['./node_modules/**','./public/']
 	})
 	.on('restart', function() {
 		console.log('Client restarted.');
