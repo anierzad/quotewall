@@ -1,12 +1,16 @@
 {
-  "name": "quotewall-api",
+  "name": "quotewall-client",
   "version": "0.0.1",
   "main": "app.js",
   "private": true,
   "dependencies": {
     "express": "^4.12.3",
     "gulp": "^3.8.11",
+    "gulp-livereload": "^3.8.0"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.5.3",
     "gulp-nodemon": "^2.0.3",
-    "mongoose": "^4.0.3"
+    "tiny-lr": "^0.1.5"
   }
 }
