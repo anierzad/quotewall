@@ -4,6 +4,11 @@ var routes = function(userModel) {
 	var userRouter = express.Router();
 
 	userRouter.route('/')
+		.all(function(req, res, next) {
+			res.header("Access-Control-Allow-Origin", "*");
+  			res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  			next();
+		})
 		.get(function(req, res) {
 
 			userModel.find(function(err, users) {
@@ -22,13 +27,14 @@ var routes = function(userModel) {
 		});
 
 	userRouter.route('/:id')
+		.all(function(req, res, next) {
+			res.header("Access-Control-Allow-Origin", "*");
+  			res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  			next();
+		})
 		.get(function(req, res) {
 
-			var criteria = {
-				_id: req.params.id
-			}
-
-			userModel.find(criteria, function(err, user) {
+			userModel.findById(req.params.id, function(err, user) {
 
 				// Error?
 				if(err) {

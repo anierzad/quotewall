@@ -1,19 +1,20 @@
 (function() {
 
-	var app = angular.module('QuoteWall', [
+	var module = angular.module('QuoteWall', [
 		'ui.router'
 	]);
 
-	app.config(function($stateProvider, $urlRouterProvider) {
+	module.config(function($stateProvider, $urlRouterProvider) {
 
 		// Default.
-		$urlRouterProvider.otherwise("/");
+		$urlRouterProvider.otherwise('/');
 
 		// States.
 		$stateProvider
-			.state("home", {
-				url: "/",
-				templateUrl: "/home.html"
+			.state('quotes', {
+				url: '/',
+				templateUrl: '/templates/quote-list.html',
+				controller: 'QuoteListController'
 			});
 	});
 

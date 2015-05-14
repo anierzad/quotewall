@@ -25,7 +25,13 @@ function notifyLivereload(event) {
 gulp.task('default', function() {
 	startLivereload();
 
-	gulp.watch(['./public/*.html','./public/app.js'], notifyLivereload);
+	gulp.watch([
+		'./public/*.html',
+		'./public/app.js',
+		'./public/services/**',
+		'./public/templates/**',
+		'./public/controllers/**'
+	], notifyLivereload);
 
 	nodemon({
 		script: 'app.js',
