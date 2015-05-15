@@ -1,0 +1,14 @@
+body {
+	padding-top: 70px;
+}
+
+/* Quote Parts */
+.qw-quotepart-author {
+	display: inline-block;
+	margin-left: 10px;
+	font-weight: bold;
+	font-style: italic;
+}
+.qw-quotepart-author:before {
+	content:"- ";
+}

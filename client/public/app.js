@@ -11,9 +11,14 @@
 
 		// States.
 		$stateProvider
-			.state('quotes', {
+			.state('users', {
+				url: '/users/',
+				templateUrl: 'templates/user-list.html',
+				controller: 'UserListController'
+			})
+			.state('home', {
 				url: '/',
-				templateUrl: '/templates/quote-list.html',
+				templateUrl: 'templates/quote-list.html',
 				controller: 'QuoteListController'
 			});
 	});

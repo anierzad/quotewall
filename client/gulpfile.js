@@ -27,6 +27,7 @@ gulp.task('default', function() {
 
 	gulp.watch([
 		'./public/*.html',
+		'./public/css/**',
 		'./public/app.js',
 		'./public/services/**',
 		'./public/templates/**',
