@@ -16,6 +16,11 @@
 				templateUrl: 'templates/user-list.html',
 				controller: 'UserListController'
 			})
+			.state('useredit', {
+				url: '/users/edit/:userid',
+				templateUrl: 'templates/user-edit.html',
+				controller: 'UserEditController'
+			})
 			.state('home', {
 				url: '/',
 				templateUrl: 'templates/quote-list.html',

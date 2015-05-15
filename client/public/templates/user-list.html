@@ -6,16 +6,14 @@
 				<th>Name</th>
 				<th>E-Mail</th>
 				<th>Edit</th>
-				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="user in users">
 				<td>img</td>
 				<td>{{ user.firstName }} {{ user.surname }}</td>
-				<td>e-mail</td>
-				<td>edit</td>
-				<td>delete</td>
+				<td>{{ user.email }}</td>
+				<td><a ui-sref="useredit({ userid: user._id })">Edit</a></td>
 			</tr>
 		</tbody>
 	</table>
