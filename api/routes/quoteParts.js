@@ -4,11 +4,6 @@ var routes = function(quotePartModel) {
 	var quotePartRouter = express.Router();
 
 	quotePartRouter.route('/')
-		.all(function(req, res, next) {
-			res.header("Access-Control-Allow-Origin", "*");
-  			res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  			next();
-		})
 		.get(function(req, res) {
 
 			var query = {};
@@ -34,11 +29,6 @@ var routes = function(quotePartModel) {
 		});
 
 	quotePartRouter.route('/:id')
-		.all(function(req, res, next) {
-			res.header("Access-Control-Allow-Origin", "*");
-  			res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  			next();
-		})
 		.get(function(req, res) {
 
 			quotePartModel.findById(req.params.id, function(err, quotePart) {

@@ -1,7 +1,8 @@
 (function() {
 
 	var module = angular.module('QuoteWall', [
-		'ui.router'
+		'ui.router',
+		'ngFileUpload'
 	]);
 
 	module.config(function($stateProvider, $urlRouterProvider) {

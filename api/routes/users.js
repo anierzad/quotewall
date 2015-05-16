@@ -4,10 +4,41 @@ var routes = function(userModel) {
 	var userRouter = express.Router();
 
 	userRouter.route('/')
-		.all(function(req, res, next) {
-			res.header("Access-Control-Allow-Origin", "*");
-  			res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  			next();
+		.post(function(req, res) {
+
+			console.log('Hit post.');
+
+			var message;
+			var status;
+
+			// Check first name.
+			if(!req.body.firstName) {
+				message = 'First name is required.';
+				status = 400;
+			}
+
+			// Check surname.
+			if(!status && !req.body.surname) {
+				message = 'Surname is required.';
+				status = 400;
+			}
+
+			// Check e-mail.
+			if(!status && !req.body.email) {
+				message = 'E-mail is required.';
+				status = 400;
+			}
+
+			// No errors, create new user.
+			if(!status) {
+				var user = new userModel(req.body);
+				user.save();
+
+				message = user._id;
+				status = 201;
+			}
+			
+			res.status(status).send(message);
 		})
 		.get(function(req, res) {
 
@@ -27,11 +58,6 @@ var routes = function(userModel) {
 		});
 
 	userRouter.route('/:id')
-		.all(function(req, res, next) {
-			res.header("Access-Control-Allow-Origin", "*");
-  			res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  			next();
-		})
 		.get(function(req, res) {
 
 			userModel.findById(req.params.id, function(err, user) {

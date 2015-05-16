@@ -1,5 +1,7 @@
 var express = require('express'),
-	mongoose = require('mongoose');
+	mongoose = require('mongoose'),
+	bodyParser = require('body-parser'),
+	cors = require('cors');
 
 // Database setup.
 var db = mongoose.connect('mongodb://localhost/quotewall');
@@ -10,6 +12,9 @@ var quotePart = require('./models/quotePart');
 // General setup.
 var app = express();
 var port = process.env.PORT || 3000;
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Routes setup.
 app.use('/api/users', require('./routes/users')(user));
