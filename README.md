@@ -20,7 +20,7 @@ Application to allow the submission of funny quotes from the office which can th
 
 ### Core
 
- 	* Add employees
+ 	* Add users
  	* Add quotes
  	* View quotes
  	* Quote visualisation
@@ -32,4 +32,4 @@ Application to allow the submission of funny quotes from the office which can th
 	* Voting
 	* Most viewed
 	* Most voted
-	* Employee leaderboard
+	* User leaderboard
