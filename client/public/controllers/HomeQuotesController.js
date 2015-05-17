@@ -7,7 +7,9 @@
 
 			DataService.getQuotes().then(
 				function(data) {
-					$scope.quotes = data;
+					if(data.length) {
+						$scope.quotes = data;
+					}
 				});
 		}]);
 })();

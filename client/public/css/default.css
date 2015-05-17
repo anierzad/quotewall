@@ -2,6 +2,22 @@ body {
 	padding-top: 70px;
 }
 
+/* Home */
+.qw-home-noquotes {
+	padding-top: 40px;
+	text-align: center;
+	font-size: 28pt;
+	color: #AAA;
+	text-shadow: 1px 1px 2px #DDD;
+}
+
+.qw-home-noquotes > div {
+	font-size: 52pt;
+	-ms-transform: rotate(90def);
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
 /* Quote Parts */
 .qw-quotepart-author {
 	display: inline-block;
