@@ -2,7 +2,7 @@
 
 	var module = angular.module('QuoteWall');
 
-	module.controller('QuoteListController', ['$scope', 'DataService',
+	module.controller('HomeQuotesController', ["$scope", "DataService", 
 		function($scope, DataService) {
 
 			DataService.getQuotes().then(

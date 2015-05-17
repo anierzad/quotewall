@@ -51,7 +51,31 @@
 		};
 
 		var getQuote = function(quoteId) {
-			return $http.get(apiBaseUrl + 'quotes/' + quoteId);
+
+			var quote;
+
+			var promises = [];
+
+			return $http.get(apiBaseUrl + 'quotes/' + quoteId).then(
+				function(response) {
+					quote = response.data;
+					promises.push(
+						$http.get(apiBaseUrl + 'quoteparts?quoteid=' + quote._id).then(function(response) {
+							quote.quoteParts = response.data;
+
+							angular.forEach(quote.quoteParts, function(quotePart) {
+									promises.push(
+										$http.get(apiBaseUrl + 'users/' + quotePart.author_id).then(function(response) {
+											quotePart.author = response.data;
+										}));
+								});
+						}));
+
+					return $q.all(promises).then(
+						function() {
+							return quote;
+						});
+				});
 		};
 
 		return {

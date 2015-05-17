@@ -1,0 +1,10 @@
+<div class="col-sm-4" ng-repeat="quote in quotes">
+	<div class="well well-lg">
+		<div ng-repeat="quotePart in quote.quoteParts | orderBy: 'order'">
+			<p>
+				{{ quotePart.content }}
+				<span class="qw-quotepart-author">{{ quotePart.author.firstName }} {{ quotePart.author.surname }}<span>
+			</p>
+		</div>
+	</div>
+</div>
