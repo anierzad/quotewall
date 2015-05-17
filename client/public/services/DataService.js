@@ -78,13 +78,38 @@
 				});
 		};
 
+		var createQuote = function(quote) {
+
+			var quoteId;
+
+			var promises = [];
+
+			return $http.post(apiBaseUrl + 'quotes/').then(
+				function(response) {
+					quoteId = response.data;
+					
+					angular.forEach(quote.quoteParts, function(quotePart) {
+
+						quotePart.quote_id = quoteId;
+
+						promises.push($http.post(apiBaseUrl + 'quoteparts/', quotePart));
+					});
+
+					return $q.all(promises).then(
+						function() {
+							return quoteId;
+						});
+				});
+		};
+
 		return {
 			getUsers: getUsers,
 			getUser: getUser,
 			createUser: createUser,
 
 			getQuotes: getQuotes,
-			getQuote: getQuote
+			getQuote: getQuote,
+			createQuote: createQuote
 		};
 	}]);
 

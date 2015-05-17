@@ -4,6 +4,13 @@ var routes = function(quoteModel) {
 	var quoteRouter = express.Router();
 
 	quoteRouter.route('/')
+		.post(function(req, res) {
+
+			var quote = new quoteModel();
+			quote.save();
+			
+			res.status(201).send(quote._id);
+		})
 		.get(function(req, res) {
 
 			quoteModel.find(function(err, quotes) {

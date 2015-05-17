@@ -53,6 +53,39 @@
 				$scope.dirtyQuote.quoteParts.push({ order: $scope.dirtyQuote.quoteParts.length });
 			};
 
+			$scope.saveButton = function() {
+
+				if($scope.formTitle === 'New Quote') {
+
+					// Create new quote.
+					DataService.createQuote($scope.dirtyQuote).then(
+						function(response) {
+
+							// Go to newly created quote.
+							$state.go('quotes', { quoteid: response.data });
+						},
+						function(response) {
+
+							console.log('Error: ' + response.data);
+						})
+					console.log('Creating new quote.')
+				} else {
+					console.log('Editing quote, save changes.')
+				}
+			};
+
+			$scope.resetButton = function() {
+
+				// Copy original user to clear changes.
+				$scope.dirtyQuote = angular.copy($scope.quote);
+			};
+
+			$scope.cancelButton = function() {
+
+				// Go to user list.
+				$state.go('quotes');
+			};
+
 			$scope.quote = {};
 			$scope.dirtyQuote = {};
 

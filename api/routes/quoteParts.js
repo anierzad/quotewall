@@ -4,6 +4,13 @@ var routes = function(quotePartModel) {
 	var quotePartRouter = express.Router();
 
 	quotePartRouter.route('/')
+		.post(function(req, res) {
+
+			var quotePart = new quotePartModel(req.body);
+			quotePart.save();
+			
+			res.status(201).send(quotePart._id);
+		})
 		.get(function(req, res) {
 
 			var query = {};

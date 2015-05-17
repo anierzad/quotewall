@@ -6,8 +6,6 @@ var routes = function(userModel) {
 	userRouter.route('/')
 		.post(function(req, res) {
 
-			console.log('Hit post.');
-
 			var message;
 			var status;
 
