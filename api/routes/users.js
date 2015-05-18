@@ -53,6 +53,27 @@ var routes = function(userModel) {
 					res.json(users);
 				}
 			});
+		})
+		.put(function(req, res) {
+
+			userModel.findById(req.body._id, function(err, user) {
+
+				// Error?
+				if(err) {
+
+					// Yes, send error status with message.
+					res.status(500).send(err);
+				} else {
+
+					// No, update user.
+					user.firstName = req.body.firstName;
+					user.surname = req.body.surname;
+					user.email = req.body.email;
+					user.save();
+
+					// Return user.
+					res.json(user);
+				}});
 		});
 
 	userRouter.route('/:id')

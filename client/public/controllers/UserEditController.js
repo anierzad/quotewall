@@ -36,10 +36,16 @@
 						function(response) {
 
 							console.log('Error: ' + response.data);
-						})
-					console.log('Creating new user.')
+						});
 				} else {
-					console.log('Editing user, save changes.')
+
+					// Update user.
+					DataService.updateUser($scope.dirtyUser).then(
+						function(response) {
+
+							// Go to updated user.
+							$state.go('users', { userid: response.data });
+						});
 				}
 			};
 

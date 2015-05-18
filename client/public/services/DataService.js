@@ -18,8 +18,11 @@
 			return $http.post(apiBaseUrl + 'users/', user);
 		};
 
+		var updateUser = function(user) {
+			return $http.put(apiBaseUrl + 'users/', user);
+		};
+
 		// Quotes API.
-		// These should eventually build out the whole quote from it's parts to save effort later.
 		var getQuotes = function() {
 			
 			var quotes;
@@ -106,6 +109,7 @@
 			getUsers: getUsers,
 			getUser: getUser,
 			createUser: createUser,
+			updateUser: updateUser,
 
 			getQuotes: getQuotes,
 			getQuote: getQuote,
