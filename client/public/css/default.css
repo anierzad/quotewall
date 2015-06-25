@@ -28,3 +28,49 @@ body {
 .qw-quotepart-author:before {
 	content:"- ";
 }
+
+.qw-quote {
+	/*background: rgba(0,0,0,0.1);*/
+	padding: 10px 0;
+}
+
+.qw-quotepart {
+	position: relative;
+	background: rgba(0,0,0,0.1);
+	min-height: 64px;
+}
+
+.qw-quotepart > p {
+	padding: 20px;
+}
+
+.qw-quote-image {
+	position: absolute;
+	top: 0;
+	display: block;
+	width: 64px;
+	height: 64px;
+	background: rgba(0,0,0,0.1);
+}
+
+.qw-quotepart:nth-child(odd) {
+	margin-right: 64px;
+	border-radius: 0 8px 8px 0;
+}
+
+.qw-quotepart:nth-child(odd) > .qw-quote-image {
+	left: 0;
+}
+
+.qw-quotepart:nth-child(odd) > p {
+	margin-left: 72px;
+}
+
+.qw-quotepart:nth-child(even) {
+	margin-left: 64px;
+	border-radius: 8px 0 0 8px;
+}
+
+.qw-quotepart:nth-child(even) > .qw-quote-image {
+	right: 0;
+}
