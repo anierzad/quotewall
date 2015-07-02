@@ -94,6 +94,51 @@ var routes = function(userModel) {
 			});
 		});
 
+	userRouter.route('/image/:id/:filename')
+		.get(function(req, res) {
+
+			userModel.findById(req.params.id, function(err, user) {
+
+				// Error?
+				if(err) {
+
+					// Yes, send error status with message.
+					res.status(500).send(err);
+				} else {
+
+					// Build path to image.
+					var imagePath = __dirname + '/../img/' + req.params.filename;
+					console.log(imagePath);
+
+					// Check it exists.
+					var fs = require('fs');
+
+					fs.exists(imagePath, function(exists) {
+						if(exists) {
+
+							console.log('Loading image.');
+
+							// Add to user and save.
+							user.image.data = fs.readFileSync(imagePath);
+							user.image.contentType = 'image/jpeg';
+							user.save();
+
+							console.log('Saving user.');
+
+							// Return OK.
+							res.status(200).send('User updated with image.');
+
+						} else {
+
+							// Return error.
+							res.status(500).send('Image not found.');
+						}
+					});
+				}
+			});
+		});
+
+
 	return userRouter;
 };
 
