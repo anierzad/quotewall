@@ -10,7 +10,7 @@
 		</thead>
 		<tbody>
 			<tr ng-repeat="user in users">
-				<td><img class="qw-img-sm" ng-src="{{ user.imageUrl }}" /></td>
+				<td><img class="qw-img-md" ng-src="{{ user.imageUrl }}" /></td>
 				<td>{{ user.firstName }} {{ user.surname }}</td>
 				<td>{{ user.email }}</td>
 				<td><a ui-sref="useredit({ userid: user._id })">Edit</a></td>

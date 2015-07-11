@@ -7,11 +7,37 @@
 
 		// Users API.
 		var getUsers = function() {
-			return $http.get(apiBaseUrl + 'users/');
+			return $http.get(apiBaseUrl + 'users/').then(
+				function(response) {
+					
+					var users = response.data;
+
+					// Generate image urls.
+					angular.forEach(users, function(user) {
+
+						// If user had an image_id;
+						if(user.image_id) {
+							user.imageUrl = apiBaseUrl + "images/" + user.image_id;
+						}
+					});
+
+					return response;
+				});
 		};
 
 		var getUser = function(userId) {
-			return $http.get(apiBaseUrl + 'users/' + userId);
+			return $http.get(apiBaseUrl + 'users/' + userId).then(
+				function(response) {
+
+					var user = response.data;
+
+					// If user has an image_id;
+					if(user.image_id) {
+						user.imageUrl = apiBaseUrl + "images/" + user.image_id;
+					}
+
+					return response;
+				});
 		};
 
 		var createUser = function(user) {
