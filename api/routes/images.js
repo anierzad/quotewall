@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 
 var routes = function(imageModel) {
 	var imageRouter = express.Router();
@@ -44,7 +45,8 @@ var routes = function(imageModel) {
 		.get(function(req, res) {
 
 			// Build path to image.
-			var imagePath = __dirname + '/../img/' + req.params.filename;
+			var imagePath = __dirname + '/../testimg/' + req.params.filename;
+			imagePath = path.normalize(imagePath);
 			console.log(imagePath);
 
 			// Check it exists.
