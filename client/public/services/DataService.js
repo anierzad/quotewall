@@ -10,6 +10,7 @@
 			return $http.get(apiBaseUrl + 'users/').then(
 				function(response) {
 					
+					// Get users from response data.
 					var users = response.data;
 
 					// Generate image urls.
@@ -29,13 +30,14 @@
 			return $http.get(apiBaseUrl + 'users/' + userId).then(
 				function(response) {
 
+					// Get user from response data.
 					var user = response.data;
 
 					// If user has an image_id;
 					if(user.image_id) {
 						user.imageUrl = apiBaseUrl + "images/" + user.image_id;
 					}
-
+					
 					return response;
 				});
 		};
@@ -66,7 +68,7 @@
 
 							angular.forEach(quote.quoteParts, function(quotePart) {
 									promises.push(
-										$http.get(apiBaseUrl + 'users/' + quotePart.author_id).then(function(response) {
+										getUser(quotePart.author_id).then(function(response) {
 											quotePart.author = response.data;
 										}));
 								});
@@ -94,7 +96,7 @@
 
 							angular.forEach(quote.quoteParts, function(quotePart) {
 									promises.push(
-										$http.get(apiBaseUrl + 'users/' + quotePart.author_id).then(function(response) {
+										getUser(quotePart.author_id).then(function(response) {
 											quotePart.author = response.data;
 										}));
 								});
