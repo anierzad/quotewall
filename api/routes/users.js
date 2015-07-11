@@ -69,6 +69,7 @@ var routes = function(userModel) {
 					user.firstName = req.body.firstName;
 					user.surname = req.body.surname;
 					user.email = req.body.email;
+					user.image_id = req.body.image_id;
 					user.save();
 
 					// Return user.
