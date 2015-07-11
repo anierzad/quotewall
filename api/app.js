@@ -8,6 +8,7 @@ var db = mongoose.connect('mongodb://localhost/quotewall');
 var user = require('./models/user')
 var quote = require('./models/quote');
 var quotePart = require('./models/quotePart');
+var image = require('./models/image');
 
 // General setup.
 var app = express();
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use('/api/users', require('./routes/users')(user));
 app.use('/api/quotes', require('./routes/quotes')(quote));
 app.use('/api/quoteparts', require('./routes/quoteParts')(quotePart));
+app.use('/api/images', require('./routes/images')(image));
 
 // Test route.
 app.get('/', function(req, res) {

@@ -2,6 +2,15 @@ body {
 	padding-top: 70px;
 }
 
+/* Image Sizes */
+.qw-img-sm {
+	width: 64px;
+}
+
+.qw-img-md {
+	width: 128px;
+}
+
 /* Home */
 .qw-home-noquotes {
 	padding-top: 40px;

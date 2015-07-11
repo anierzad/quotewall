@@ -10,5 +10,8 @@ module.exports = mongoose.model('user', new Schema({
 	},
 	email: {
 		type: String
+	},
+	image_id: {
+		type: String
 	}
 }));
