@@ -5,14 +5,21 @@
 	</div>
 </div>
 
-<div class="col-sm-4" ng-repeat="quote in quotes">
-	<div class="qw-quote">
+<div class="col-sm-6 col-md-4" ng-repeat="quote in quotes">
+	<div class="qw-quote" ng-class="{ multi: quote.quoteParts.length > 1 }">
 		<div class="qw-quotepart" ng-repeat="quotePart in quote.quoteParts | orderBy: 'order'">
-			<div class="qw-quote-image"></div>
-			<p>
-				{{ quotePart.content }}
-				<span class="qw-quotepart-author">{{ quotePart.author.firstName }} {{ quotePart.author.surname }}<span>
-			</p>
+			<div class="qw-quotepart-image">
+				<img class="qw-img qw-img-sm" ng-src="{{ quotePart.author.imageUrl }}" />
+			</div>
+			<div class="qw-quotepart-content">
+				<div class-"qw-quotepart-head">
+					<span class="qw-author-name">{{ quotePart.author.firstName }} {{ quotePart.author.surname }}</span>
+					<span class="qw-quotepart-date"></span>
+				</div>
+				<p>
+					{{ quotePart.content }}
+				</p>
+			</div>
 		</div>
 	</div>
 </div>
